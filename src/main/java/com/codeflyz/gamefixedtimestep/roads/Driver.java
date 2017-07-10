@@ -6,20 +6,20 @@ package com.codeflyz.gamefixedtimestep.roads;
  */
     /**
      * Driver is a set of doubleing point numbers representing the psychological
-     * state of the driver: speedPsyc
+     * state of the driver: focus
      */
     public class Driver {
 
-        public double speedPsyc = 1;  // 0.1 to 1.0 in .1 steps. 
+        public double focus = 1;  // 0.1 to 1.0 in .1 steps. 
 
         public Driver() {
             
-            speedPsyc = (double) Math.random();
-            if (speedPsyc < 0.4) {
-                speedPsyc = (double)0.4 + speedPsyc;
+            focus = (double) Math.random();
+            if (focus < 0.4) {
+                focus = (double)0.4 + focus;
             }
         }
         public Double getAdjustedSpeed(Double speed){
-           return speed * speedPsyc;
+           return speed * focus;
         }
     }
