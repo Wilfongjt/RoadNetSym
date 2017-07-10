@@ -599,7 +599,7 @@ public class Car extends Feature {
                 show,
                 drawX, drawY);
         */
-        System.out.println("car: " + this.toString());
+        //System.out.println("car: " + this.toString());
     }
 
     public String trimFloat(double speed) {
