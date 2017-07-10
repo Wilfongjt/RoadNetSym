@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- *
+ 
  * @author jameswilfong
  *
  * Link is a set of indices to next and previous objects. Genaric linking.
