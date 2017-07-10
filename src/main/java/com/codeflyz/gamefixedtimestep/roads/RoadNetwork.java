@@ -68,7 +68,7 @@ public class RoadNetwork extends ArrayList<RoadList> {
         for (RoadList f : this) {
             f.draw(g);
         }
-        g.drawString("capacity: "+getCapacity() + " segments: "+ this.getSegmentCount(), 20, 20);
+        g.drawString("cars: "+this.size() + " roads: "+ this.size(), 20, 20);
     }
 
     public String toString() {
