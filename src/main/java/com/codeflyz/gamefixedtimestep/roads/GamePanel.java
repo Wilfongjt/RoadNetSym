@@ -5,7 +5,7 @@
  */
 package com.codeflyz.gamefixedtimestep.roads;
 
-import com.codeflyz.gamefixedtimestep.networks.FishBoneNetworkGenerator;
+import com.codeflyz.gamefixedtimestep.networks.SquarevilleNetworkGenerator;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayDeque;
@@ -111,8 +111,8 @@ public class GamePanel extends JPanel {
         //roadNetwork = new  LongRoadNetworkGenerator(segmentLength);
         //roadNetwork = new  ShortCutNetworkGenerator(segmentLength);  
         //roadNetwork = new  CrossNetworkGenerator(segmentLength);  
-        //roadNetwork = new SquarevilleNetworkGenerator(segmentLength);
-        roadNetwork = new  FishBoneNetworkGenerator(segmentLength);
+        roadNetwork = new SquarevilleNetworkGenerator(segmentLength);
+        //roadNetwork = new  FishBoneNetworkGenerator(segmentLength);
         ///////////////////////////////////////////////////
         System.out.println("network: " + roadNetwork.toString());
     }
