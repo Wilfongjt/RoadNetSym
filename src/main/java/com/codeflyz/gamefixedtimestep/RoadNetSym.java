@@ -61,7 +61,7 @@ public class RoadNetSym extends JFrame implements ActionListener {
     
     
     public RoadNetSym() {
-        super("Fixed Timestep Game Loop Test");
+        super("Network Viewer");
 
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
