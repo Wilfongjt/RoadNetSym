@@ -56,7 +56,6 @@ public class GamePanel extends JPanel {
          */
 
         for (int idx = 0; idx < roadNetwork.size(); idx++) {
-
           
             cars.add((Car) new Car(idx, new Driver(), roadNetwork));
             cars.get(cars.size() - 1).setColor(color);
