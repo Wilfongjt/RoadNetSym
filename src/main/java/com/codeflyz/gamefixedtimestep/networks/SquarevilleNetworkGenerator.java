@@ -104,7 +104,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         for (int i = 0; i < rows; i++) {
             Coordinate startPoint = new Coordinate(x, y);
             direction = new Direction(1, -1);
-            RoadList roadList = this.getDiagonal(startPoint, segs, direction);
+            RoadList roadList = this.getDiJagagonal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -121,9 +121,11 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         
             Coordinate startPoint = new Coordinate(x, y);
             direction = new Direction(-1, -1);
-            RoadList roadList = this.getDiagonal(startPoint, segs, direction);
+            RoadList roadList = this.getDiJagagonal(startPoint, segs, direction);
             this.add(roadList);
 
+            
+            
         
     }
 
@@ -203,4 +205,41 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         }
         return roadList;
     }
+    
+        public RoadList getDiJagagonal(Coordinate startPoint, int segments, Direction direction) {
+        RoadList roadList = new RoadList();
+        //System.out.println("diagonal: " + segmentLength);
+        
+        // create a diagonal
+        // nudge the internal segement coordinates
+        
+        roadList.add((Segment) new Segment(
+                0,
+                startPoint.x,
+                startPoint.y,
+                startPoint.x + (double) (segmentLength * direction.x),
+                startPoint.y + (double) (segmentLength * direction.y)
+        ).setColour(Color.BLACK).setPostedSpeed((double) 30)
+        );
+        for (int i = 1; i < segments; i++) {
+
+            roadList.add((Segment) new Segment(
+                    i,
+                    startPoint.x + (double) (i * segmentLength * direction.x),
+                    startPoint.y + (double) (i * segmentLength * direction.y),
+                    startPoint.x + (double) (((i + 1)) * segmentLength * direction.x),
+                    startPoint.y + (double) (((i + 1)) * segmentLength * direction.y)
+            ).setColour(Color.LIGHT_GRAY).setPostedSpeed((double) 30)
+            );
+        }
+        
+        roadList.getFirst().getLast().y += 25.0;
+        roadList.get(1).getFirst().y += 25.0;
+        roadList.get(1).getLast().y -= 25.0;
+        roadList.get(2).getFirst().y -= 25.0;
+        
+        return roadList;
+    }
+    
+    
 }
