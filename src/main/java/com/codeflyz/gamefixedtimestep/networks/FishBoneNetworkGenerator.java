@@ -1,8 +1,9 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
+import com.codeflyz.gamefixedtimestep.roads.JRoadList;
 import com.codeflyz.gamefixedtimestep.roads.JSegment;
 import com.codeflyz.roadnet.Coordinate;
-import com.codeflyz.roadnet.RoadList;
+
 import com.codeflyz.roadnet.RoadNetwork;
 
 import java.awt.Color;
@@ -47,8 +48,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, 1);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, 1);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -68,7 +69,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, (segs*3), direction);
+            JRoadList roadList = getVertical(startPoint, (segs*3), direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -91,7 +92,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getVertical(startPoint, segs, direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -113,8 +114,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            //RoadList roadList = getVertical(startPoint, segs, direction);
-            RoadList roadList = getDiagonal(startPoint, segs,direction);
+            //JRoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getDiagonal(startPoint, segs,direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -135,8 +136,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            //RoadList roadList = getVertical(startPoint, segs, direction);
-            RoadList roadList = getDiagonal(startPoint, segs,direction);
+            //JRoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getDiagonal(startPoint, segs,direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -150,8 +151,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
 
     }
      
-    public RoadList getVertical(Coordinate startPoint, int segments, int direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getVertical(Coordinate startPoint, int segments, int direction) {
+        JRoadList roadList = new JRoadList();
         roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
@@ -175,8 +176,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         return roadList;
     }
 
-    public RoadList getHorizontal(Coordinate startPoint, int segments, int direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getHorizontal(Coordinate startPoint, int segments, int direction) {
+        JRoadList roadList = new JRoadList();
         roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
@@ -199,8 +200,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         return roadList;
     }
 
-    public RoadList getDiagonal(Coordinate startPoint, int segments, int direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getDiagonal(Coordinate startPoint, int segments, int direction) {
+        JRoadList roadList = new JRoadList();
         roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
