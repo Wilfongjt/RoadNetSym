@@ -30,12 +30,14 @@ public class JMBR extends MBR implements Drawable {
         g.drawLine((int) get(1).x, (int) get(0).y, (int) get(0).x, (int) get(0).y);// right to left
     }
 
-    public Color getColour() {
-        return this.color;
+public JMBR setColour(Color color) {
+        setColor(color);
+        return this;
     }
 
-    public void setColour(Color color) {
+    public void setColor(Color color) {
         this.color = color;
+
     }
 
 }
