@@ -8,7 +8,7 @@ package com.codeflyz.gamefixedtimestep.roads;
 import com.codeflyz.roadnet.Segment;
 import java.awt.Color;
 import java.awt.Graphics;
-import static javax.swing.UIManager.get;
+//import static javax.swing.UIManager.get;
 
 /**
  *
@@ -42,11 +42,10 @@ public class JSegment extends Segment implements Drawable {
             //g.setColor(Color.BLACK);
             //g.drawString("(" + this.getSpeed().toString().substring(0, 4) + ")", (int) get(0).x, (int) get(0).y);
 
-            g.setColor(Color.RED);
-            //System.out.println("Occupied segment " + this.occupied);
+           g.setColor(Color.RED);
 
         } else {
-
+ 
             g.setColor(getColor());
 
         }
@@ -57,9 +56,9 @@ public class JSegment extends Segment implements Drawable {
 
     }
 
-    /*public Color getColour() {
+    public Color getColour() {
         return this.color;
-    }*/
+    }
 
     public JSegment setColour(Color color) {
         setColor( color );
@@ -68,5 +67,8 @@ public class JSegment extends Segment implements Drawable {
     public void setColor(Color color){
        this.color=color;
     
+    }
+    public Color getColor(){
+       return color;
     }
 }
