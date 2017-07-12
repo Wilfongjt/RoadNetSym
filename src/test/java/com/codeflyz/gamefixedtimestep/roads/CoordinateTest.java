@@ -1,6 +1,7 @@
 
 package com.codeflyz.gamefixedtimestep.roads;
 
+import com.codeflyz.roadnet.Coordinate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
