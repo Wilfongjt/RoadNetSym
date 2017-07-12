@@ -1,10 +1,11 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
-import com.codeflyz.gamefixedtimestep.roads.Coordinate;
-import com.codeflyz.gamefixedtimestep.roads.Link;
-import com.codeflyz.gamefixedtimestep.roads.RoadList;
-import com.codeflyz.gamefixedtimestep.roads.RoadNetwork;
-import com.codeflyz.gamefixedtimestep.roads.Segment;
+import com.codeflyz.gamefixedtimestep.roads.JRoadNetwork;
+import com.codeflyz.gamefixedtimestep.roads.JSegment;
+
+import com.codeflyz.roadnet.Coordinate;
+import com.codeflyz.roadnet.RoadList;
+
 import java.awt.Color;
 
 /**
@@ -13,7 +14,7 @@ import java.awt.Color;
  *
  *
  */
-public class CrossNetworkGenerator extends RoadNetwork implements NetworkGenerator {
+public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenerator {
 
     double segmentLength = 15;
 
@@ -157,24 +158,27 @@ public class CrossNetworkGenerator extends RoadNetwork implements NetworkGenerat
     public RoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
         RoadList roadList = new RoadList();
         //System.out.println("vertical: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        JSegment seg = new JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
                 startPoint.x,
                 startPoint.y + (double)(segmentLength * direction.y)
-        ).setColour(Color.BLACK).setPostedSpeed((double) 15)
         );
+        seg.setColour(Color.BLACK);
+        seg.setPostedSpeed((double) 15);
+        
+        roadList.add(seg);
         
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new JSegment(
                     i,
                     startPoint.x,
                     startPoint.y + (double) (i * segmentLength * direction.y),
                     startPoint.x,
                     startPoint.y + (double) (((i + 1)) * segmentLength * direction.y)
-            ).setColour(Color.LIGHT_GRAY).setPostedSpeed((double) 15)
+            ).setPostedSpeed((double) 15)
             );
         }
 
@@ -184,7 +188,10 @@ public class CrossNetworkGenerator extends RoadNetwork implements NetworkGenerat
     public RoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
         RoadList roadList = new RoadList();
         //System.out.println("horizontal: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        
+        
+        
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -194,7 +201,7 @@ public class CrossNetworkGenerator extends RoadNetwork implements NetworkGenerat
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x + (double) (i * segmentLength * direction.x),
                     startPoint.y,
@@ -209,7 +216,7 @@ public class CrossNetworkGenerator extends RoadNetwork implements NetworkGenerat
     public RoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
         RoadList roadList = new RoadList();
         //System.out.println("diagonal: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -219,7 +226,7 @@ public class CrossNetworkGenerator extends RoadNetwork implements NetworkGenerat
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x + (double) (i * segmentLength * direction.x),
                     startPoint.y + (double) (i * segmentLength * direction.y),
