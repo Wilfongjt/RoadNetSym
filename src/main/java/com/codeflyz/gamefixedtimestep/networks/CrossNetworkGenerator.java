@@ -4,7 +4,7 @@ import com.codeflyz.gamefixedtimestep.roads.JRoadNetwork;
 import com.codeflyz.gamefixedtimestep.roads.JSegment;
 
 import com.codeflyz.roadnet.Coordinate;
-import com.codeflyz.roadnet.RoadList;
+import com.codeflyz.roadnet.JRoadList;
 
 import java.awt.Color;
 
@@ -57,8 +57,8 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, direction);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, direction);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -77,8 +77,8 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, direction);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, direction);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -96,7 +96,7 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getVertical(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -113,7 +113,7 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = this.getHorizontal(startPoint, segs, direction);
+            JRoadList roadList = this.getHorizontal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -130,7 +130,7 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getVertical(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -146,7 +146,7 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = this.getHorizontal(startPoint, segs, direction);
+            JRoadList roadList = this.getHorizontal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -155,8 +155,8 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
        
     }
 
-    public RoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("vertical: " + segmentLength);
         JSegment seg = new JSegment(
                 0,
@@ -185,8 +185,8 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
         return roadList;
     }
 
-    public RoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("horizontal: " + segmentLength);
         
         
@@ -213,8 +213,8 @@ public class CrossNetworkGenerator extends JRoadNetwork implements NetworkGenera
         return roadList;
     }
 
-    public RoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("diagonal: " + segmentLength);
         roadList.add(  new  JSegment(
                 0,
