@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.codeflyz.gamefixedtimestep.roads;
 
 import com.codeflyz.roadnet.Car;
@@ -31,28 +26,37 @@ public class JCar extends Car implements Drawable {
 
     public JCar(int idx, Driver driver, RoadNetwork roadNetwork) {
         super(idx, driver, roadNetwork);
+        this.lastLoc = new Coordinate(this.get(0).x, this.get(0).y);
 
+        this.lastDrawX = (int) this.get(0).x;
+
+        this.lastDrawY = (int) this.get(0).y;
     }
 
     public Car setInterpolation(double interp) {
         interpolation = interp;
         return this;
     }
-    public Color getColour(){
-       return this.color;
+
+    public Color getColour() {
+        return this.color;
     }
-    public void setColour(Color color){
-       this.color = color;
+
+    public void setColour(Color color) {
+        this.color = color;
     }
-    public void setColor(Color color){
-       this.color=color;
-    
+
+    public void setColor(Color color) {
+        this.color = color;
+
     }
+
     public double getInterpolation() {
         return interpolation;
     }
 
     public void update() {
+ 
         this.lastLoc = new Coordinate(this.get(0).x, this.get(0).y); // stash current point
 
         // update curren point
