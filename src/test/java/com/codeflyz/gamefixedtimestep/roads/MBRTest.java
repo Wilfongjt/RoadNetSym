@@ -1,6 +1,8 @@
 
 package com.codeflyz.gamefixedtimestep.roads;
 
+import com.codeflyz.roadnet.Coordinate;
+import com.codeflyz.roadnet.MBR;
 import java.awt.Graphics;
 import org.junit.After;
 import org.junit.AfterClass;
