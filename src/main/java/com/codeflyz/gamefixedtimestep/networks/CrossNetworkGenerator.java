@@ -1,10 +1,11 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
+import com.codeflyz.gamefixedtimestep.roads.JRoadList;
 import com.codeflyz.gamefixedtimestep.roads.JRoadNetwork;
 import com.codeflyz.gamefixedtimestep.roads.JSegment;
 
 import com.codeflyz.roadnet.Coordinate;
-import com.codeflyz.roadnet.JRoadList;
+
 
 import java.awt.Color;
 
