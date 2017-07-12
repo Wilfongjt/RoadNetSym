@@ -44,6 +44,10 @@ public class JCar extends Car implements Drawable {
     public void setColour(Color color){
        this.color = color;
     }
+    public void setColor(Color color){
+       this.color=color;
+    
+    }
     public double getInterpolation() {
         return interpolation;
     }
