@@ -1,10 +1,10 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
-import com.codeflyz.gamefixedtimestep.roads.Coordinate;
-import com.codeflyz.gamefixedtimestep.roads.Link;
-import com.codeflyz.gamefixedtimestep.roads.RoadList;
-import com.codeflyz.gamefixedtimestep.roads.RoadNetwork;
-import com.codeflyz.gamefixedtimestep.roads.Segment;
+import com.codeflyz.gamefixedtimestep.roads.JSegment;
+import com.codeflyz.roadnet.Coordinate;
+import com.codeflyz.roadnet.RoadList;
+import com.codeflyz.roadnet.RoadNetwork;
+
 import java.awt.Color;
 
 /**
@@ -129,7 +129,7 @@ public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGene
     public RoadList getVertical(Coordinate startPoint, int segments, int direction) {
         RoadList roadList = new RoadList();
         //System.out.println("vertical: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -140,7 +140,7 @@ public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGene
         
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x,
                     startPoint.y + ((double) i * segmentLength * direction),
@@ -156,7 +156,7 @@ public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGene
     public RoadList getHorizontal(Coordinate startPoint, int segments, int direction) {
         RoadList roadList = new RoadList();
         //System.out.println("horizontal: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -166,7 +166,7 @@ public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGene
         );
         for (int i = 1; i < segments+3; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x + ((double) i * segmentLength * direction),
                     startPoint.y,
@@ -181,7 +181,7 @@ public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGene
     public RoadList getDiagonal(Coordinate startPoint, int segments, int direction) {
         RoadList roadList = new RoadList();
         //System.out.println("diagonal: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -191,7 +191,7 @@ public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGene
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x + ((double) i * segmentLength * direction),
                     startPoint.y + ((double) i * segmentLength * direction),
