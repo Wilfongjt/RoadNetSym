@@ -18,5 +18,5 @@ public interface Drawable {
 
     public void draw(Graphics g);
 
-    public void setColour(Color color);
+    public void setColor(Color color);
 }
