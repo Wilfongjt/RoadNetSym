@@ -42,8 +42,9 @@ public class JCar extends Car implements Drawable {
         return this.color;
     }
 
-    public void setColour(Color color) {
-        this.color = color;
+    public JCar setColour(Color color) {
+        setColor(color);
+        return this;
     }
 
     public void setColor(Color color) {
@@ -51,12 +52,16 @@ public class JCar extends Car implements Drawable {
 
     }
 
+    public Color getColor() {
+        return color;
+    }
+
     public double getInterpolation() {
         return interpolation;
     }
 
     public void update() {
- 
+
         this.lastLoc = new Coordinate(this.get(0).x, this.get(0).y); // stash current point
 
         // update curren point
