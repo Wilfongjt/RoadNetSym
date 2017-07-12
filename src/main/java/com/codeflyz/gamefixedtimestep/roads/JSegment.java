@@ -57,11 +57,16 @@ public class JSegment extends Segment implements Drawable {
 
     }
 
-    public Color getColour() {
+    /*public Color getColour() {
         return this.color;
-    }
+    }*/
 
-    public void setColour(Color color) {
-        this.color = color;
+    public JSegment setColour(Color color) {
+        setColor( color );
+        return this;
+    }
+    public void setColor(Color color){
+       this.color=color;
+    
     }
 }
