@@ -44,7 +44,7 @@ public class JRoadList extends RoadList implements Drawable {
 
         for (Segment f : this) {// draw segments
 
-            ((JSegment)f).draw(g);
+            ((JSegment) f).draw(g);
             // g.setColor(Color.red);
         }
         // draw sign
@@ -64,11 +64,14 @@ public class JRoadList extends RoadList implements Drawable {
          */
         g.drawString("" + getIdx(), (int) p1.x, (int) p1.y);
     }
-    public Color getColour() {
-        return this.color;
+
+    public JRoadList setColour(Color color) {
+        setColor(color);
+        return this;
     }
 
-    public void setColour(Color color) {
+    public void setColor(Color color) {
         this.color = color;
+
     }
 }
