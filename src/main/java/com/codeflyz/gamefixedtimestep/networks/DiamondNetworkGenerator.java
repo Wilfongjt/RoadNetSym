@@ -1,8 +1,9 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
+import com.codeflyz.gamefixedtimestep.roads.JRoadList;
 import com.codeflyz.gamefixedtimestep.roads.JSegment;
 import com.codeflyz.roadnet.Coordinate;
-import com.codeflyz.roadnet.RoadList;
+
 import com.codeflyz.roadnet.RoadNetwork;
 
 import java.awt.Color;
@@ -59,7 +60,7 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = this.getHorizontal(startPoint, segs, direction);
+            JRoadList roadList = this.getHorizontal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -74,8 +75,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, direction);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, direction);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -94,8 +95,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, direction);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, direction);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -113,8 +114,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, direction);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, direction);
             
             this.add(roadList);
 
@@ -130,8 +131,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, direction);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, direction);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -151,7 +152,7 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getVertical(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -168,7 +169,7 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = this.getHorizontal(startPoint, segs, direction);
+            JRoadList roadList = this.getHorizontal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -185,7 +186,7 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getVertical(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -201,7 +202,7 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
             // lower steps
             Coordinate startPoint = new Coordinate(x, y);
             //direction *= -1;
-            RoadList roadList = this.getHorizontal(startPoint, segs, direction);
+            JRoadList roadList = this.getHorizontal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -210,8 +211,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
        
     }
 
-    public RoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("vertical: " + segmentLength);
         roadList.add(  new  JSegment(
                 0,
@@ -237,8 +238,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
         return roadList;
     }
 
-    public RoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("horizontal: " + segmentLength);
         roadList.add(  new  JSegment(
                 0,
@@ -262,8 +263,8 @@ public class DiamondNetworkGenerator extends RoadNetwork implements NetworkGener
         return roadList;
     }
 
-    public RoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("diagonal: " + segmentLength);
         roadList.add(  new  JSegment(
                 0,
