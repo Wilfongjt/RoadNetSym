@@ -29,8 +29,13 @@ public class JRoadNetwork extends RoadNetwork implements Drawable {
         g.drawString("cars: " + this.size() + " roads: " + this.size(), 20, 20);
     }
 
-
-    public void setColour(Color color) {
-        // color is not defined at network level
+/*
+ public JSegment setColour(Color color) {
+        setColor( color );
+        return this;
+    }*/
+    public void setColor(Color color){
+       //this.color=color;
+    
     }
 }
