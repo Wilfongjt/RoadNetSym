@@ -1,10 +1,11 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
 import com.codeflyz.gamefixedtimestep.roads.JRoadList;
+import com.codeflyz.gamefixedtimestep.roads.JRoadNetwork;
 import com.codeflyz.gamefixedtimestep.roads.JSegment;
 import com.codeflyz.roadnet.Coordinate;
 
-import com.codeflyz.roadnet.RoadNetwork;
+
 
 import java.awt.Color;
 
@@ -14,7 +15,7 @@ import java.awt.Color;
  *
  *
  */
-public class LongRoadNetworkGenerator extends RoadNetwork implements NetworkGenerator {
+public class LongRoadNetworkGenerator extends JRoadNetwork implements NetworkGenerator {
 
     double segmentLength = 15;
 
