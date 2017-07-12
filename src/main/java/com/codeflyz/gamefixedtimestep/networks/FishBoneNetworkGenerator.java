@@ -1,10 +1,12 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
-import com.codeflyz.gamefixedtimestep.roads.Coordinate;
-import com.codeflyz.gamefixedtimestep.roads.Link;
-import com.codeflyz.gamefixedtimestep.roads.RoadList;
-import com.codeflyz.gamefixedtimestep.roads.RoadNetwork;
-import com.codeflyz.gamefixedtimestep.roads.Segment;
+import com.codeflyz.gamefixedtimestep.roads.JRoadList;
+import com.codeflyz.gamefixedtimestep.roads.JRoadNetwork;
+import com.codeflyz.gamefixedtimestep.roads.JSegment;
+import com.codeflyz.roadnet.Coordinate;
+
+
+
 import java.awt.Color;
 
 /**
@@ -13,7 +15,7 @@ import java.awt.Color;
  *
  *
  */
-public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGenerator {
+public class FishBoneNetworkGenerator extends JRoadNetwork implements NetworkGenerator {
 
     double segmentLength = 30;
 
@@ -47,8 +49,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
 
             Coordinate startPoint = new Coordinate(x, y);
 
-            //RoadList roadList = getHorizontal(startPoint, segs, 1);
-            RoadList roadList = getDiagonal(startPoint, segs, 1);
+            //JRoadList roadList = getHorizontal(startPoint, segs, 1);
+            JRoadList roadList = getDiagonal(startPoint, segs, 1);
             this.add(roadList);
 
             x = this.getLast().getLast().getLast().x;
@@ -68,7 +70,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, (segs*3), direction);
+            JRoadList roadList = getVertical(startPoint, (segs*3), direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -91,7 +93,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            RoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getVertical(startPoint, segs, direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -113,8 +115,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            //RoadList roadList = getVertical(startPoint, segs, direction);
-            RoadList roadList = getDiagonal(startPoint, segs,direction);
+            //JRoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getDiagonal(startPoint, segs,direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -135,8 +137,8 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
             Coordinate startPoint = new Coordinate(x, y);
 
             //direction *= -1;
-            //RoadList roadList = getVertical(startPoint, segs, direction);
-            RoadList roadList = getDiagonal(startPoint, segs,direction);
+            //JRoadList roadList = getVertical(startPoint, segs, direction);
+            JRoadList roadList = getDiagonal(startPoint, segs,direction);
             this.add(roadList);
 
             //direction *= -1;
@@ -150,9 +152,9 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
 
     }
      
-    public RoadList getVertical(Coordinate startPoint, int segments, int direction) {
-        RoadList roadList = new RoadList();
-        roadList.add((Segment) new Segment(
+    public JRoadList getVertical(Coordinate startPoint, int segments, int direction) {
+        JRoadList roadList = new JRoadList();
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -162,7 +164,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x,
                     startPoint.y + ((double) i * segmentLength * direction),
@@ -175,9 +177,9 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         return roadList;
     }
 
-    public RoadList getHorizontal(Coordinate startPoint, int segments, int direction) {
-        RoadList roadList = new RoadList();
-        roadList.add((Segment) new Segment(
+    public JRoadList getHorizontal(Coordinate startPoint, int segments, int direction) {
+        JRoadList roadList = new JRoadList();
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -187,7 +189,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x + ((double) i * segmentLength * direction),
                     startPoint.y,
@@ -199,9 +201,9 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         return roadList;
     }
 
-    public RoadList getDiagonal(Coordinate startPoint, int segments, int direction) {
-        RoadList roadList = new RoadList();
-        roadList.add((Segment) new Segment(
+    public JRoadList getDiagonal(Coordinate startPoint, int segments, int direction) {
+        JRoadList roadList = new JRoadList();
+        roadList.add(  new  JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -211,7 +213,7 @@ public class FishBoneNetworkGenerator extends RoadNetwork implements NetworkGene
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new  JSegment(
                     i,
                     startPoint.x + ((double) i * segmentLength * direction),
                     startPoint.y + ((double) i * segmentLength * direction),

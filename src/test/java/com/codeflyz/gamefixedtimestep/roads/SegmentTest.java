@@ -1,5 +1,7 @@
 package com.codeflyz.gamefixedtimestep.roads;
 
+import com.codeflyz.roadnet.Coordinate;
+import com.codeflyz.roadnet.Segment;
 import java.awt.Color;
 import java.awt.Graphics;
 import org.junit.After;

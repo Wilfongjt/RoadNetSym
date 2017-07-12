@@ -1,11 +1,10 @@
 package com.codeflyz.gamefixedtimestep.networks;
 
-import com.codeflyz.gamefixedtimestep.networks.NetworkGenerator;
-import com.codeflyz.gamefixedtimestep.roads.Coordinate;
-import com.codeflyz.gamefixedtimestep.roads.Link;
-import com.codeflyz.gamefixedtimestep.roads.RoadList;
-import com.codeflyz.gamefixedtimestep.roads.RoadNetwork;
-import com.codeflyz.gamefixedtimestep.roads.Segment;
+import com.codeflyz.gamefixedtimestep.roads.JRoadList;
+import com.codeflyz.gamefixedtimestep.roads.JRoadNetwork;
+import com.codeflyz.gamefixedtimestep.roads.JSegment;
+import com.codeflyz.roadnet.Coordinate;
+
 import java.awt.Color;
 
 /**
@@ -14,7 +13,7 @@ import java.awt.Color;
  *
  *
  */
-public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkGenerator {
+public class SquarevilleNetworkGenerator extends JRoadNetwork implements NetworkGenerator {
 
     double segmentLength = 30;
 
@@ -63,7 +62,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
                 // lower steps
                 Coordinate startPoint = new Coordinate(x, y);
                 //direction *= -1;
-                RoadList roadList = this.getHorizontal(startPoint, segs, direction);
+                JRoadList roadList = this.getHorizontal(startPoint, segs, direction);
                 this.add(roadList);
                 x = this.getLast().getLast().getLast().x;
                 y = this.getLast().getLast().getLast().y;
@@ -84,7 +83,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
                 // lower steps
                 Coordinate startPoint = new Coordinate(x, y);
                 //direction *= -1;
-                RoadList roadList = this.getVertical(startPoint, segs, direction);
+                JRoadList roadList = this.getVertical(startPoint, segs, direction);
                 this.add(roadList);
                 x = this.getLast().getLast().getLast().x;
                 y = this.getLast().getLast().getLast().y;
@@ -104,7 +103,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         for (int i = 0; i < rows; i++) {
             Coordinate startPoint = new Coordinate(x, y);
             direction = new Direction(1, -1);
-            RoadList roadList = this.getDiJagagonal(startPoint, segs, direction);
+            JRoadList roadList = this.getDiJagagonal(startPoint, segs, direction);
             this.add(roadList);
             x = this.getLast().getLast().getLast().x;
             y = this.getLast().getLast().getLast().y;
@@ -121,7 +120,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         
             Coordinate startPoint = new Coordinate(x, y);
             direction = new Direction(-1, -1);
-            RoadList roadList = this.getDiJagagonal(startPoint, segs, direction);
+            JRoadList roadList = this.getDiJagagonal(startPoint, segs, direction);
             this.add(roadList);
 
             
@@ -129,10 +128,10 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         
     }
 
-    public RoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getVertical(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("vertical: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add( new JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -143,7 +142,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
 
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add( new JSegment(
                     i,
                     startPoint.x,
                     startPoint.y + (double) (i * segmentLength * direction.y),
@@ -156,10 +155,10 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         return roadList;
     }
 
-    public RoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getHorizontal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("horizontal: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add(  new JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -169,7 +168,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new JSegment(
                     i,
                     startPoint.x + (double) (i * segmentLength * direction.x),
                     startPoint.y,
@@ -181,10 +180,10 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         return roadList;
     }
 
-    public RoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+    public JRoadList getDiagonal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("diagonal: " + segmentLength);
-        roadList.add((Segment) new Segment(
+        roadList.add(  new JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -194,7 +193,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new JSegment(
                     i,
                     startPoint.x + (double) (i * segmentLength * direction.x),
                     startPoint.y + (double) (i * segmentLength * direction.y),
@@ -206,14 +205,14 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         return roadList;
     }
     
-        public RoadList getDiJagagonal(Coordinate startPoint, int segments, Direction direction) {
-        RoadList roadList = new RoadList();
+        public JRoadList getDiJagagonal(Coordinate startPoint, int segments, Direction direction) {
+        JRoadList roadList = new JRoadList();
         //System.out.println("diagonal: " + segmentLength);
         
         // create a diagonal
         // nudge the internal segement coordinates
         
-        roadList.add((Segment) new Segment(
+        roadList.add(  new JSegment(
                 0,
                 startPoint.x,
                 startPoint.y,
@@ -223,7 +222,7 @@ public class SquarevilleNetworkGenerator extends RoadNetwork implements NetworkG
         );
         for (int i = 1; i < segments; i++) {
 
-            roadList.add((Segment) new Segment(
+            roadList.add(  new JSegment(
                     i,
                     startPoint.x + (double) (i * segmentLength * direction.x),
                     startPoint.y + (double) (i * segmentLength * direction.y),

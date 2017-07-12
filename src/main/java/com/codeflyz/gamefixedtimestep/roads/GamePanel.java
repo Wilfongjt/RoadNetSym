@@ -1,5 +1,10 @@
 package com.codeflyz.gamefixedtimestep.roads;
 
+import com.codeflyz.roadnet.Driver;
+import com.codeflyz.roadnet.Link;
+import com.codeflyz.roadnet.Car;
+//import com.codeflyz.roadnet.RoadList;
+import com.codeflyz.roadnet.LinkList;
 import com.codeflyz.gamefixedtimestep.networks.SquarevilleNetworkGenerator;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,7 +24,7 @@ public class GamePanel extends JPanel {
     ArrayList<Link> carLinks = new LinkList();
     LaunchPad launchPad = new LaunchPad();
 
-    RoadNetwork roadNetwork = new RoadNetwork();
+    JRoadNetwork roadNetwork = new JRoadNetwork();
 
     double ballXVel, ballYVel;
 
@@ -40,7 +45,8 @@ public class GamePanel extends JPanel {
         //int space = 50;
         Color color = Color.RED;
 
-        RoadList startList = roadNetwork.get(0);
+        JRoadList startList = (JRoadList)roadNetwork.get(0);
+        
 
         /*
         for (int idx = 0; idx < 1; idx++) {
@@ -57,8 +63,8 @@ public class GamePanel extends JPanel {
 
         for (int idx = 0; idx < roadNetwork.size(); idx++) {
           
-            cars.add((Car) new Car(idx, new Driver(), roadNetwork));
-            cars.get(cars.size() - 1).setColor(color);
+            cars.add((Car) new JCar(idx, new Driver(), roadNetwork));
+            ((JCar)cars.get(cars.size() - 1)).setColour(color);
             
         }
 
@@ -119,7 +125,7 @@ public class GamePanel extends JPanel {
 
         //jball.update(this);
         for (Car car : cars) {
-            car.update(this);
+            ((JCar)car).update();
         }
     }
 
@@ -145,9 +151,9 @@ public class GamePanel extends JPanel {
             System.out.println("carz: " + car);
         }*/
         for (Car car : cars) {
-            car
-                    .setInterpolation(interpolation)
-                    .draw(g);
+            ((JCar)car)
+                    .setInterpolation(interpolation);
+            ((JCar)car).draw(g);
 
         }
        // System.out.println("...");
